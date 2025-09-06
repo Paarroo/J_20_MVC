@@ -3,10 +3,12 @@ class View
   def create_gossip
     puts "\n👤 Quel est ton prénom ?"
     print "✨ > "
-    author = gets.chomp
+    input = gets
+    author = input&.chomp || ""
     puts "\n💬 Q'as tu d'intéressant à me raconter ?\n"
     print "🔥 > "
-    content = gets.chomp
+    input = gets
+    content = input&.chomp || ""
     puts "🌶️ C'est croustillant ! 🌶️"
     return { author: author, content: content }
   end
@@ -27,11 +29,12 @@ class View
     while true
       puts "🔢 Entre le numéro du gossip maintenant :"
       print "⚡ > "
-      input = gets.chomp.to_i
+      input = gets
+      input_num = (input&.chomp || "").to_i
       total_gossips = Gossip.all.length
-      if input >= 1 && input <= total_gossips
+      if input_num >= 1 && input_num <= total_gossips
         puts "\n✅ Le gossip a été supprimé avec succès !! 🎉\n"
-        return input - 1
+        return input_num - 1
       else
         puts "⚠️ Donne un numéro de ligne valide coco 🤪"
       end

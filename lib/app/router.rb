@@ -1,6 +1,6 @@
 require 'controller'
 class Router
-  attr_accessor :cntroller, :index_gossips
+  attr_accessor :controller
 
   def initialize
     @controller = Controller.new
@@ -16,7 +16,8 @@ class Router
       puts '3. 🗑️  Supprimer un gossip.'
       puts "4. 👋 Quitter l'app."
       print "⚡ > "
-      parametre = gets.chomp.to_i
+      input = gets
+      parametre = (input&.chomp || "").to_i
       case parametre
       when 1
         puts '🎉 Parfait, créons un gossip !'

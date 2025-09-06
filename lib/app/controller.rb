@@ -26,6 +26,6 @@ class Controller
     all_gossips = Gossip.all
     @view.index_gossips(all_gossips)
     index = @view.index_to_delete
-    @gossip.destroy(index)
+    Gossip.destroy(index)
   end
 end
